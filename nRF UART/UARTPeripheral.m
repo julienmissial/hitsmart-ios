@@ -73,6 +73,11 @@
 - (void) writeString:(NSString *) string
 {
     NSData *data = [NSData dataWithBytes:string.UTF8String length:string.length];
+    [self writeRawData:data];
+}
+
+- (void) writeRawData:(NSData *) data
+{
     if ((self.txCharacteristic.properties & CBCharacteristicPropertyWriteWithoutResponse) != 0)
     {
         [self.peripheral writeValue:data forCharacteristic:self.txCharacteristic type:CBCharacteristicWriteWithoutResponse];
@@ -83,13 +88,8 @@
     }
     else
     {
-        NSLog(@"No write property on TX characteristic, %d.", self.txCharacteristic.properties);
+        NSLog(@"No write property on TX characteristic, %lu.", (unsigned long)self.txCharacteristic.properties);
     }
-}
-
-- (void) writeRawData:(NSData *) data
-{
-    
 }
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error

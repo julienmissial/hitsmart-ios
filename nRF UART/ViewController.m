@@ -38,8 +38,6 @@ typedef enum
 	// Do any additional setup after loading the view, typically from a nib.
     self.cm = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
-    [self addTextToConsole:@"Did start application" dataType:LOGGING];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     
@@ -82,20 +80,45 @@ typedef enum
     }
 }
 
-- (IBAction)sendTextFieldEditingDidBegin:(id)sender {
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//    [self.tableView setContentOffset:CGPointMake(0, 220) animated:YES];
+- (void) gloveConnected
+{
+    self.state = CONNECTED;
+    [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+    
 }
 
-- (IBAction)sendTextFieldEditingChanged:(id)sender {
-    if (self.sendTextField.text.length > 20)
+- (void) startSession
+{
+    if (self.state != CONNECTED)
     {
-        [self.sendTextField setBackgroundColor:[UIColor redColor]];
+        return;
     }
-    else
+    
+    StartSessionMessage startMsg;
+    startMsg.header.msgID = START_SESSION;
+    startMsg.header.time.major = 0;
+    startMsg.header.time.minor = 0;
+    startMsg.header.dataLength = 0;
+    
+    NSData *msgData = [NSData dataWithBytes:&startMsg length:sizeof(startMsg)];
+    [self.currentPeripheral writeRawData:msgData];
+}
+
+- (void) endSession
+{
+    if (self.state != CONNECTED)
     {
-        [self.sendTextField setBackgroundColor:[UIColor whiteColor]];
+        return;
     }
+    
+    EndSessionMessage startMsg;
+    startMsg.header.msgID = END_SESSION;
+    startMsg.header.time.major = 0;
+    startMsg.header.time.minor = 0;
+    startMsg.header.dataLength = 0;
+    
+    NSData *msgData = [NSData dataWithBytes:&startMsg length:sizeof(startMsg)];
+    [self.currentPeripheral writeRawData:msgData];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -159,9 +182,12 @@ typedef enum
 {
     if (central.state == CBCentralManagerStatePoweredOn)
     {
-        [self.connectButton setEnabled:YES];
+        [self.connectButton setEnabled:TRUE];
     }
-    
+    else if (central.state == CBCentralManagerStatePoweredOff)
+    {
+        [self.connectButton setEnabled:FALSE];
+    }
 }
 
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
@@ -178,12 +204,7 @@ typedef enum
 {
     NSLog(@"Did connect peripheral %@", peripheral.name);
 
-    [self addTextToConsole:[NSString stringWithFormat:@"Did connect to %@", peripheral.name] dataType:LOGGING];
-    
-    self.state = CONNECTED;
-    [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
-    [self.sendButton setUserInteractionEnabled:YES];
-    [self.sendTextField setUserInteractionEnabled:YES];
+    [self gloveConnected];
     
     if ([self.currentPeripheral.peripheral isEqual:peripheral])
     {

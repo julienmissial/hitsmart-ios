@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "UARTPeripheral.h"
+#import "Messages.h"
 
 @interface ViewController : UITableViewController <UITextFieldDelegate, CBCentralManagerDelegate, UARTPeripheralDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -19,6 +20,5 @@
 
 - (IBAction)connectButtonPressed:(id)sender;
 - (IBAction)sendButtonPressed:(id)sender;
-- (IBAction)sendTextFieldEditingDidBegin:(id)sender;
-- (IBAction)sendTextFieldEditingChanged:(id)sender;
+- (void)gloveConnected;
 @end
