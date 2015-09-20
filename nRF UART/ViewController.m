@@ -15,13 +15,6 @@ typedef enum
     CONNECTED,
 } ConnectionState;
 
-typedef enum
-{
-    LOGGING,
-    RX,
-    TX,
-} ConsoleDataType;
-
 @interface ViewController ()
 @property CBCentralManager *cm;
 @property ConnectionState state;
@@ -38,12 +31,9 @@ typedef enum
 	// Do any additional setup after loading the view, typically from a nib.
     self.cm = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
     
-    [self addTextToConsole:@"Did start application" dataType:LOGGING];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     
-    [self.sendTextField setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,8 +44,6 @@ typedef enum
 
 - (IBAction)connectButtonPressed:(id)sender
 {
-    [self.sendTextField resignFirstResponder];
-    
     switch (self.state) {
         case IDLE:
             self.state = SCANNING;
@@ -82,86 +70,93 @@ typedef enum
     }
 }
 
-- (IBAction)sendTextFieldEditingDidBegin:(id)sender {
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//    [self.tableView setContentOffset:CGPointMake(0, 220) animated:YES];
-}
-
-- (IBAction)sendTextFieldEditingChanged:(id)sender {
-    if (self.sendTextField.text.length > 20)
-    {
-        [self.sendTextField setBackgroundColor:[UIColor redColor]];
-    }
-    else
-    {
-        [self.sendTextField setBackgroundColor:[UIColor whiteColor]];
-    }
-}
-
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
+- (void) gloveConnected
 {
-    [self sendButtonPressed:textField];
-    return YES;
+    self.state = CONNECTED;
+    [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+    
 }
 
-- (IBAction)sendButtonPressed:(id)sender {
-    [self.sendTextField resignFirstResponder];
-    
-    if (self.sendTextField.text.length == 0)
+- (void) startSession
+{
+    if (self.state != CONNECTED)
     {
         return;
     }
     
-    [self addTextToConsole:self.sendTextField.text dataType:TX];
+    StartSessionMessage startMsg;
+    startMsg.header.msgID = START_SESSION;
+    startMsg.header.time.major = 0;
+    startMsg.header.time.minor = 0;
+    startMsg.header.dataLength = 0;
     
-    [self.currentPeripheral writeString:self.sendTextField.text];
-}
-- (void) didReadHardwareRevisionString:(NSString *)string
-{
-    [self addTextToConsole:[NSString stringWithFormat:@"Hardware revision: %@", string] dataType:LOGGING];
+    NSData *msgData = [NSData dataWithBytes:&startMsg length:sizeof(startMsg)];
+    [self.currentPeripheral writeRawData:msgData];
 }
 
-- (void) didReceiveData:(NSString *)string
+- (void) endSession
 {
-    [self addTextToConsole:string dataType:RX];
-}
-
-- (void) addTextToConsole:(NSString *) string dataType:(ConsoleDataType) dataType
-{
-    NSString *direction;
-    switch (dataType)
+    if (self.state != CONNECTED)
     {
-        case RX:
-            direction = @"RX";
-            break;
-            
-        case TX:
-            direction = @"TX";
-            break;
-            
-        case LOGGING:
-            direction = @"Log";
+        return;
     }
     
-    NSDateFormatter *formatter;
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss.SSS"];
+    EndSessionMessage startMsg;
+    startMsg.header.msgID = END_SESSION;
+    startMsg.header.time.major = 0;
+    startMsg.header.time.minor = 0;
+    startMsg.header.dataLength = 0;
     
-    self.consoleTextView.text = [self.consoleTextView.text stringByAppendingFormat:@"[%@] %@: %@\n",[formatter stringFromDate:[NSDate date]], direction, string];
-    
-    [self.consoleTextView setScrollEnabled:NO];
-    NSRange bottom = NSMakeRange(self.consoleTextView.text.length-1, self.consoleTextView.text.length);
-    [self.consoleTextView scrollRangeToVisible:bottom];
-    [self.consoleTextView setScrollEnabled:YES];
+    NSData *msgData = [NSData dataWithBytes:&startMsg length:sizeof(startMsg)];
+    [self.currentPeripheral writeRawData:msgData];
 }
+
+
+- (void) didReceiveData:(NSData *)data
+{
+    MsgHeader_s header;
+    [data getBytes:&header length:sizeof(MsgHeader_s)];
+
+    switch(header.msgID)
+    {
+        case GLOVE_STATUS:
+            [self processGloveStatus:header :data];
+            break;
+        case HIT_DATA:
+            [self processHitData:header :data];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) processGloveStatus:(MsgHeader_s)header :(NSData*)data
+{
+    GloveStatusData_s gloveStatusData;
+    [data getBytes:&gloveStatusData length:sizeof(gloveStatusData)];
+    
+    return;
+}
+
+- (void) processHitData:(MsgHeader_s)header :(NSData*)data
+{
+    HitData_s hitData;
+    [data getBytes:&hitData length:sizeof(hitData)];
+    
+    return;
+}
+
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central
 {
     if (central.state == CBCentralManagerStatePoweredOn)
     {
-        [self.connectButton setEnabled:YES];
+        [self.connectButton setEnabled:TRUE];
     }
-    
+    else if (central.state == CBCentralManagerStatePoweredOff)
+    {
+        [self.connectButton setEnabled:FALSE];
+    }
 }
 
 - (void) centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
@@ -178,12 +173,7 @@ typedef enum
 {
     NSLog(@"Did connect peripheral %@", peripheral.name);
 
-    [self addTextToConsole:[NSString stringWithFormat:@"Did connect to %@", peripheral.name] dataType:LOGGING];
-    
-    self.state = CONNECTED;
-    [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
-    [self.sendButton setUserInteractionEnabled:YES];
-    [self.sendTextField setUserInteractionEnabled:YES];
+    [self gloveConnected];
     
     if ([self.currentPeripheral.peripheral isEqual:peripheral])
     {
@@ -194,14 +184,10 @@ typedef enum
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Did disconnect peripheral %@", peripheral.name);
-    
-    [self addTextToConsole:[NSString stringWithFormat:@"Did disconnect from %@, error code %d", peripheral.name, error.code] dataType:LOGGING];
-    
+
     self.state = IDLE;
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
-    [self.sendButton setUserInteractionEnabled:NO];
-    [self.sendTextField setUserInteractionEnabled:NO];
-    
+
     if ([self.currentPeripheral.peripheral isEqual:peripheral])
     {
         [self.currentPeripheral didDisconnect];

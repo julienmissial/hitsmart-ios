@@ -24,6 +24,7 @@
 - (UARTPeripheral *) initWithPeripheral:(CBPeripheral*)peripheral delegate:(id<UARTPeripheralDelegate>) delegate;
 
 - (void) writeString:(NSString *) string;
+- (void) writeRawData:(NSData *) data;
 
 - (void) didConnect;
 - (void) didDisconnect;

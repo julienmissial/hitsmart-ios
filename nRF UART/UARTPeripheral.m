@@ -73,6 +73,11 @@
 - (void) writeString:(NSString *) string
 {
     NSData *data = [NSData dataWithBytes:string.UTF8String length:string.length];
+    [self writeRawData:data];
+}
+
+- (void) writeRawData:(NSData *) data
+{
     if ((self.txCharacteristic.properties & CBCharacteristicPropertyWriteWithoutResponse) != 0)
     {
         [self.peripheral writeValue:data forCharacteristic:self.txCharacteristic type:CBCharacteristicWriteWithoutResponse];
@@ -83,13 +88,8 @@
     }
     else
     {
-        NSLog(@"No write property on TX characteristic, %d.", self.txCharacteristic.properties);
+        NSLog(@"No write property on TX characteristic, %lu.", (unsigned long)self.txCharacteristic.properties);
     }
-}
-
-- (void) writeRawData:(NSData *) data
-{
-    
 }
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
@@ -158,21 +158,9 @@
     
     if (characteristic == self.rxCharacteristic)
     {
-        
         NSString *string = [NSString stringWithUTF8String:[[characteristic value] bytes]];
-        [self.delegate didReceiveData:string];
-    }
-    else if ([characteristic.UUID isEqual:self.class.hardwareRevisionStringUUID])
-    {
-        NSString *hwRevision = @"";
-        const uint8_t *bytes = characteristic.value.bytes;
-        for (int i = 0; i < characteristic.value.length; i++)
-        {
-            NSLog(@"%x", bytes[i]);
-            hwRevision = [hwRevision stringByAppendingFormat:@"0x%02x, ", bytes[i]];
-        }
-        
-        [self.delegate didReadHardwareRevisionString:[hwRevision substringToIndex:hwRevision.length-2]];
+        NSData *data = characteristic.value;
+        [self.delegate didReceiveData:data];
     }
 }
 @end
