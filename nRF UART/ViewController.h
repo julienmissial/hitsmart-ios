@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *sendTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
+- (void) processGloveStatus: (MsgHeader_s)header : (NSData*)data;
+- (void) processHitData: (MsgHeader_s)header : (NSData*)data;
+
 - (IBAction)connectButtonPressed:(id)sender;
 - (IBAction)sendButtonPressed:(id)sender;
 - (void)gloveConnected;

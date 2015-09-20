@@ -15,13 +15,6 @@ typedef enum
     CONNECTED,
 } ConnectionState;
 
-typedef enum
-{
-    LOGGING,
-    RX,
-    TX,
-} ConsoleDataType;
-
 @interface ViewController ()
 @property CBCentralManager *cm;
 @property ConnectionState state;
@@ -41,7 +34,6 @@ typedef enum
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
     
-    [self.sendTextField setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,8 +44,6 @@ typedef enum
 
 - (IBAction)connectButtonPressed:(id)sender
 {
-    [self.sendTextField resignFirstResponder];
-    
     switch (self.state) {
         case IDLE:
             self.state = SCANNING;
@@ -121,62 +111,41 @@ typedef enum
     [self.currentPeripheral writeRawData:msgData];
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField
-{
-    [self sendButtonPressed:textField];
-    return YES;
-}
 
-- (IBAction)sendButtonPressed:(id)sender {
-    [self.sendTextField resignFirstResponder];
-    
-    if (self.sendTextField.text.length == 0)
+- (void) didReceiveData:(NSData *)data
+{
+    MsgHeader_s header;
+    [data getBytes:&header length:sizeof(MsgHeader_s)];
+
+    switch(header.msgID)
     {
-        return;
+        case GLOVE_STATUS:
+            [self processGloveStatus:header :data];
+            break;
+        case HIT_DATA:
+            [self processHitData:header :data];
+            break;
+        default:
+            break;
     }
-    
-    [self addTextToConsole:self.sendTextField.text dataType:TX];
-    
-    [self.currentPeripheral writeString:self.sendTextField.text];
-}
-- (void) didReadHardwareRevisionString:(NSString *)string
-{
-    [self addTextToConsole:[NSString stringWithFormat:@"Hardware revision: %@", string] dataType:LOGGING];
 }
 
-- (void) didReceiveData:(NSString *)string
+- (void) processGloveStatus:(MsgHeader_s)header :(NSData*)data
 {
-    [self addTextToConsole:string dataType:RX];
+    GloveStatusData_s gloveStatusData;
+    [data getBytes:&gloveStatusData length:sizeof(gloveStatusData)];
+    
+    return;
 }
 
-- (void) addTextToConsole:(NSString *) string dataType:(ConsoleDataType) dataType
+- (void) processHitData:(MsgHeader_s)header :(NSData*)data
 {
-    NSString *direction;
-    switch (dataType)
-    {
-        case RX:
-            direction = @"RX";
-            break;
-            
-        case TX:
-            direction = @"TX";
-            break;
-            
-        case LOGGING:
-            direction = @"Log";
-    }
+    HitData_s hitData;
+    [data getBytes:&hitData length:sizeof(hitData)];
     
-    NSDateFormatter *formatter;
-    formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss.SSS"];
-    
-    self.consoleTextView.text = [self.consoleTextView.text stringByAppendingFormat:@"[%@] %@: %@\n",[formatter stringFromDate:[NSDate date]], direction, string];
-    
-    [self.consoleTextView setScrollEnabled:NO];
-    NSRange bottom = NSMakeRange(self.consoleTextView.text.length-1, self.consoleTextView.text.length);
-    [self.consoleTextView scrollRangeToVisible:bottom];
-    [self.consoleTextView setScrollEnabled:YES];
+    return;
 }
+
 
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central
 {
@@ -215,14 +184,10 @@ typedef enum
 - (void) centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Did disconnect peripheral %@", peripheral.name);
-    
-    [self addTextToConsole:[NSString stringWithFormat:@"Did disconnect from %@, error code %d", peripheral.name, error.code] dataType:LOGGING];
-    
+
     self.state = IDLE;
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
-    [self.sendButton setUserInteractionEnabled:NO];
-    [self.sendTextField setUserInteractionEnabled:NO];
-    
+
     if ([self.currentPeripheral.peripheral isEqual:peripheral])
     {
         [self.currentPeripheral didDisconnect];
