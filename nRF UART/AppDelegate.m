@@ -7,13 +7,24 @@
 //
 
 #import "AppDelegate.h"
+
 #import <Parse/Parse.h>
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x262626)];
+    [[UIBarButtonItem appearance] setTintColor:UIColorFromRGB(0xF6320B)];
+    
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xF6320B), NSFontAttributeName:[UIFont fontWithName:@"Futura-CondensedMedium" size:24.0]}];
+    [[UIBarButtonItem appearance] setTintColor:UIColorFromRGB(0xF6320B)];
+    
     // Initialize Parse.
     [Parse setApplicationId:@"MKhq6hxZo7OADALk3Qbws7QLIi0RFClzLKX4uZok"
                   clientKey:@"FQ6zb2YGWKX073W9UcfozfJdiwn46njjIwByl0uP"];

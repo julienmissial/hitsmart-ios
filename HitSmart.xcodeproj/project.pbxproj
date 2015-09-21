@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8426550A1BAF6CA1005FC956 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655081BAF6CA1005FC956 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
+		8426550B1BAF6CA1005FC956 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655091BAF6CA1005FC956 /* Parse.framework */; settings = {ASSET_TAGS = (); }; };
+		842655111BAF6ED4005FC956 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426550F1BAF6ED4005FC956 /* MainStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		842655131BAF6F0A005FC956 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655121BAF6F0A005FC956 /* libsqlite3.tbd */; };
+		842655151BAF6F17005FC956 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655141BAF6F17005FC956 /* libz.tbd */; };
+		842655191BAF6F7A005FC956 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655161BAF6F7A005FC956 /* AudioToolbox.framework */; };
+		8426551A1BAF6F7A005FC956 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655171BAF6F7A005FC956 /* CFNetwork.framework */; };
+		8426551B1BAF6F7A005FC956 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842655181BAF6F7A005FC956 /* CoreLocation.framework */; };
+		842655201BAF7016005FC956 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426551C1BAF7016005FC956 /* QuartzCore.framework */; };
+		842655211BAF7016005FC956 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426551D1BAF7016005FC956 /* Security.framework */; };
+		842655221BAF7016005FC956 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426551E1BAF7016005FC956 /* StoreKit.framework */; };
+		842655231BAF7016005FC956 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8426551F1BAF7016005FC956 /* SystemConfiguration.framework */; };
+		84AE16861BAF7FF8001A9A85 /* logo_noblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE16841BAF7FF8001A9A85 /* logo_noblack.png */; settings = {ASSET_TAGS = (); }; };
+		84AE16871BAF7FF8001A9A85 /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE16851BAF7FF8001A9A85 /* logo_transparent.png */; settings = {ASSET_TAGS = (); }; };
 		9382DA2416E63FC300C223D6 /* Chip-hires-iOS-app2_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9382DA2316E63FC200C223D6 /* Chip-hires-iOS-app2_114x114.png */; };
 		9382DA2616E63FF900C223D6 /* Chip-hires-iOS-app2_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9382DA2516E63FF900C223D6 /* Chip-hires-iOS-app2_57x57.png */; };
 		938B0B341803E5B90043E510 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 938B0B331803E5B90043E510 /* Images.xcassets */; };
@@ -19,13 +33,26 @@
 		93C9A61F16A0BAB000E6BF8E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C9A61E16A0BAB000E6BF8E /* Default.png */; };
 		93C9A62116A0BAB000E6BF8E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C9A62016A0BAB000E6BF8E /* Default@2x.png */; };
 		93C9A62316A0BAB000E6BF8E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C9A62216A0BAB000E6BF8E /* Default-568h@2x.png */; };
-		93C9A62616A0BAB000E6BF8E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C9A62416A0BAB000E6BF8E /* MainStoryboard.storyboard */; };
-		93C9A62916A0BAB000E6BF8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9A62816A0BAB000E6BF8E /* ViewController.m */; };
+		93C9A62916A0BAB000E6BF8E /* CurrentSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9A62816A0BAB000E6BF8E /* CurrentSessionViewController.m */; };
 		93C9A63016A1C06E00E6BF8E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C9A62F16A1C06E00E6BF8E /* CoreBluetooth.framework */; };
 		93C9A63316A1C0BA00E6BF8E /* UARTPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9A63216A1C0BA00E6BF8E /* UARTPeripheral.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		842655081BAF6CA1005FC956 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "parse-library-1.8.5/Bolts.framework"; sourceTree = "<group>"; };
+		842655091BAF6CA1005FC956 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "parse-library-1.8.5/Parse.framework"; sourceTree = "<group>"; };
+		842655101BAF6ED4005FC956 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		842655121BAF6F0A005FC956 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		842655141BAF6F17005FC956 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		842655161BAF6F7A005FC956 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		842655171BAF6F7A005FC956 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		842655181BAF6F7A005FC956 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8426551C1BAF7016005FC956 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8426551D1BAF7016005FC956 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8426551E1BAF7016005FC956 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8426551F1BAF7016005FC956 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84AE16841BAF7FF8001A9A85 /* logo_noblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_noblack.png; sourceTree = "<group>"; };
+		84AE16851BAF7FF8001A9A85 /* logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transparent.png; sourceTree = "<group>"; };
 		9382DA2316E63FC200C223D6 /* Chip-hires-iOS-app2_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Chip-hires-iOS-app2_114x114.png"; path = "../Chip-hires-iOS-app2_114x114.png"; sourceTree = "<group>"; };
 		9382DA2516E63FF900C223D6 /* Chip-hires-iOS-app2_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Chip-hires-iOS-app2_57x57.png"; path = "../Chip-hires-iOS-app2_57x57.png"; sourceTree = "<group>"; };
 		938B0B331803E5B90043E510 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -42,12 +69,12 @@
 		93C9A61E16A0BAB000E6BF8E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		93C9A62016A0BAB000E6BF8E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		93C9A62216A0BAB000E6BF8E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		93C9A62516A0BAB000E6BF8E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		93C9A62716A0BAB000E6BF8E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		93C9A62816A0BAB000E6BF8E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		93C9A62716A0BAB000E6BF8E /* CurrentSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentSessionViewController.h; sourceTree = "<group>"; };
+		93C9A62816A0BAB000E6BF8E /* CurrentSessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentSessionViewController.m; sourceTree = "<group>"; };
 		93C9A62F16A1C06E00E6BF8E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		93C9A63116A1C0BA00E6BF8E /* UARTPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UARTPeripheral.h; sourceTree = "<group>"; };
 		93C9A63216A1C0BA00E6BF8E /* UARTPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UARTPeripheral.m; sourceTree = "<group>"; };
+		CDC431F91BAF1C4D00DF87E6 /* Messages.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +82,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842655201BAF7016005FC956 /* QuartzCore.framework in Frameworks */,
+				842655211BAF7016005FC956 /* Security.framework in Frameworks */,
+				842655221BAF7016005FC956 /* StoreKit.framework in Frameworks */,
+				842655231BAF7016005FC956 /* SystemConfiguration.framework in Frameworks */,
+				842655191BAF6F7A005FC956 /* AudioToolbox.framework in Frameworks */,
+				8426551A1BAF6F7A005FC956 /* CFNetwork.framework in Frameworks */,
+				93C9A61116A0BAAF00E6BF8E /* CoreGraphics.framework in Frameworks */,
+				8426551B1BAF6F7A005FC956 /* CoreLocation.framework in Frameworks */,
+				842655151BAF6F17005FC956 /* libz.tbd in Frameworks */,
+				842655131BAF6F0A005FC956 /* libsqlite3.tbd in Frameworks */,
+				8426550A1BAF6CA1005FC956 /* Bolts.framework in Frameworks */,
 				93C9A63016A1C06E00E6BF8E /* CoreBluetooth.framework in Frameworks */,
 				93C9A60D16A0BAAF00E6BF8E /* UIKit.framework in Frameworks */,
 				93C9A60F16A0BAAF00E6BF8E /* Foundation.framework in Frameworks */,
-				93C9A61116A0BAAF00E6BF8E /* CoreGraphics.framework in Frameworks */,
+				8426550B1BAF6CA1005FC956 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +123,17 @@
 		93C9A60B16A0BAAF00E6BF8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8426551C1BAF7016005FC956 /* QuartzCore.framework */,
+				8426551D1BAF7016005FC956 /* Security.framework */,
+				8426551E1BAF7016005FC956 /* StoreKit.framework */,
+				8426551F1BAF7016005FC956 /* SystemConfiguration.framework */,
+				842655161BAF6F7A005FC956 /* AudioToolbox.framework */,
+				842655171BAF6F7A005FC956 /* CFNetwork.framework */,
+				842655181BAF6F7A005FC956 /* CoreLocation.framework */,
+				842655141BAF6F17005FC956 /* libz.tbd */,
+				842655121BAF6F0A005FC956 /* libsqlite3.tbd */,
+				842655081BAF6CA1005FC956 /* Bolts.framework */,
+				842655091BAF6CA1005FC956 /* Parse.framework */,
 				93C9A62F16A1C06E00E6BF8E /* CoreBluetooth.framework */,
 				93C9A60C16A0BAAF00E6BF8E /* UIKit.framework */,
 				93C9A60E16A0BAAF00E6BF8E /* Foundation.framework */,
@@ -98,13 +147,14 @@
 			children = (
 				93C9A61B16A0BAAF00E6BF8E /* AppDelegate.h */,
 				93C9A61C16A0BAB000E6BF8E /* AppDelegate.m */,
-				93C9A62416A0BAB000E6BF8E /* MainStoryboard.storyboard */,
-				93C9A62716A0BAB000E6BF8E /* ViewController.h */,
-				93C9A62816A0BAB000E6BF8E /* ViewController.m */,
+				93C9A62716A0BAB000E6BF8E /* CurrentSessionViewController.h */,
+				93C9A62816A0BAB000E6BF8E /* CurrentSessionViewController.m */,
 				93C9A63116A1C0BA00E6BF8E /* UARTPeripheral.h */,
 				93C9A63216A1C0BA00E6BF8E /* UARTPeripheral.m */,
 				938B0B331803E5B90043E510 /* Images.xcassets */,
+				8426550F1BAF6ED4005FC956 /* MainStoryboard.storyboard */,
 				93C9A61316A0BAAF00E6BF8E /* Supporting Files */,
+				CDC431F91BAF1C4D00DF87E6 /* Messages.h */,
 			);
 			path = "nRF UART";
 			sourceTree = "<group>";
@@ -112,6 +162,8 @@
 		93C9A61316A0BAAF00E6BF8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84AE16841BAF7FF8001A9A85 /* logo_noblack.png */,
+				84AE16851BAF7FF8001A9A85 /* logo_transparent.png */,
 				9382DA2516E63FF900C223D6 /* Chip-hires-iOS-app2_57x57.png */,
 				9382DA2316E63FC200C223D6 /* Chip-hires-iOS-app2_114x114.png */,
 				93C9A61416A0BAAF00E6BF8E /* HitSmart-Info.plist */,
@@ -182,12 +234,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				938B0B341803E5B90043E510 /* Images.xcassets in Resources */,
+				84AE16871BAF7FF8001A9A85 /* logo_transparent.png in Resources */,
 				93C9A61716A0BAAF00E6BF8E /* InfoPlist.strings in Resources */,
+				84AE16861BAF7FF8001A9A85 /* logo_noblack.png in Resources */,
 				93C9A61F16A0BAB000E6BF8E /* Default.png in Resources */,
 				93C9A62116A0BAB000E6BF8E /* Default@2x.png in Resources */,
 				93C9A62316A0BAB000E6BF8E /* Default-568h@2x.png in Resources */,
-				93C9A62616A0BAB000E6BF8E /* MainStoryboard.storyboard in Resources */,
 				9382DA2416E63FC300C223D6 /* Chip-hires-iOS-app2_114x114.png in Resources */,
+				842655111BAF6ED4005FC956 /* MainStoryboard.storyboard in Resources */,
 				9382DA2616E63FF900C223D6 /* Chip-hires-iOS-app2_57x57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +255,7 @@
 			files = (
 				93C9A61916A0BAAF00E6BF8E /* main.m in Sources */,
 				93C9A61D16A0BAB000E6BF8E /* AppDelegate.m in Sources */,
-				93C9A62916A0BAB000E6BF8E /* ViewController.m in Sources */,
+				93C9A62916A0BAB000E6BF8E /* CurrentSessionViewController.m in Sources */,
 				93C9A63316A1C0BA00E6BF8E /* UARTPeripheral.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,20 +263,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8426550F1BAF6ED4005FC956 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842655101BAF6ED4005FC956 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
 		93C9A61516A0BAAF00E6BF8E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				93C9A61616A0BAAF00E6BF8E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		93C9A62416A0BAB000E6BF8E /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93C9A62516A0BAB000E6BF8E /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -250,7 +304,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -271,7 +325,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -282,13 +336,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/parse-library-1.8.5",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "nRF UART/HitSmart-Prefix.pch";
 				INFOPLIST_FILE = "nRF UART/HitSmart-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = HitSmart;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -297,13 +356,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/parse-library-1.8.5",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "nRF UART/HitSmart-Prefix.pch";
 				INFOPLIST_FILE = "nRF UART/HitSmart-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = HitSmart;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
