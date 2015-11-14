@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+
 #import <Parse/Parse.h>
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -25,16 +28,21 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xF6320B), NSFontAttributeName:[UIFont fontWithName:@"Futura-CondensedMedium" size:24.0]}];
     [[UIBarButtonItem appearance] setTintColor:UIColorFromRGB(0xF6320B)];
     
+    
     // Initialize Parse.
     [Parse setApplicationId:@"MKhq6hxZo7OADALk3Qbws7QLIi0RFClzLKX4uZok"
                   clientKey:@"FQ6zb2YGWKX073W9UcfozfJdiwn46njjIwByl0uP"];
     
+    
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    
+    
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    testObject[@"foo"] = @"bar";
+//    [testObject saveInBackground];
     
     return YES;
 }
@@ -59,11 +67,23 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
+
 
 @end
