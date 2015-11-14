@@ -23,5 +23,6 @@
 
 - (IBAction)connectButtonPressed:(id)sender;
 - (IBAction)sendButtonPressed:(id)sender;
+- (IBAction)logoutButtonPressed:(id)sender;
 - (void)gloveConnected;
 @end

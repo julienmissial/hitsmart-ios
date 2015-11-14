@@ -7,6 +7,7 @@
 //
 
 #import "CurrentSessionViewController.h"
+#import <Parse/Parse.h>
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define SCREEN_HEIGHT self.view.frame.size.height
@@ -38,6 +39,7 @@ typedef enum
     UILabel * averageForceLabelTitle;
     UIButton * startStop;
     UIButton * resetButton;
+    UIButton * logoutButton;
     NSTimer * stopTimer;
     NSDate * startDate;
     NSDate * pauseDate;
@@ -183,6 +185,15 @@ typedef enum
     
     [self.view addSubview:averageForceLabel];
     
+    logoutButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self formatTheButtonMyWay:logoutButton withText:@"LOGOUT"];
+    [logoutButton.titleLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:12.0]];
+    logoutButton.frame = CGRectMake(0, 0, 75, 75);
+    logoutButton.layer.cornerRadius = 37.5;
+    logoutButton.center = CGPointMake(SCREEN_WIDTH-50, SCREEN_HEIGHT-50);
+    [logoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:logoutButton];
+    
 }
 - (IBAction)connectButtonPressed:(id)sender
 {
@@ -211,6 +222,14 @@ typedef enum
             break;
     }
 }
+
+- (void)logout
+{
+    NSLog(@"User logged out");
+    [PFUser logOut];
+    [self performSegueWithIdentifier:@"UserLoggedOut" sender:self];
+}
+
 - (void) didReadHardwareRevisionString:(NSString *)string
 {
     //[self addTextToConsole:[NSString stringWithFormat:@"Hardware revision: %@", string] dataType:LOGGING];
@@ -320,7 +339,6 @@ typedef enum
     [b.titleLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:24.0]];
     b.tintColor = UIColorFromRGB(0xFFFFFF);
     b.backgroundColor = UIColorFromRGB(0xF6320B);
-    
 }
 
 -(void)startStopTimer{
