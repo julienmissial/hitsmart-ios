@@ -10,7 +10,15 @@
 #import "LoginViewController.h"
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "CurrentSessionViewController.h"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define SCREEN_HEIGHT self.view.frame.size.height
+#define SCREEN_WIDTH self.view.frame.size.width
 
+@interface LoginViewController(){
+    BOOL buttonWasClicked;
+    UIImageView * logo;
+}
+@end
 @implementation LoginViewController
 
 @synthesize btnLogin;
@@ -28,13 +36,21 @@
 @synthesize loginBtnCancel;
 
 - (void) viewDidLoad {
+    [super viewDidLoad];
     
+    self.view.backgroundColor = UIColorFromRGB(0x262626);
+    /*
+    logo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 114.5,10, 229, 106)];
+    logo.image = [UIImage imageNamed:@"logo_noblack.png"];
+    [self.view addSubview:logo];*/ 
+
 }
 
 // Outlet for FBLogin button
 - (IBAction) fbLoginPressed:(id)sender
 {
     // Disable the Login button to prevent multiple touches
+
     [btnLogin setEnabled:NO];
     
     // Show an activity indicator
@@ -68,14 +84,17 @@
 }
 
 - (IBAction) emailSignupPressed:(id)sender {
+
     [self performSegueWithIdentifier:@"SignupWithEmail" sender:self];
 }
 
 - (IBAction) emailLoginPressed:(id)sender {
+
     [self performSegueWithIdentifier:@"LoginWithEmail" sender:self];
 }
 
 - (IBAction) emailSignupSubmitPressed:(id)sender {
+    [logo removeFromSuperview];
     [signupBtnSubmit setEnabled:NO];
     
     NSString *password = [signupPasswordField text];
@@ -115,7 +134,7 @@
 }
 
 - (IBAction) emailLoginSubmitPressed:(id)sender {
-    
+    [logo removeFromSuperview];
     NSString *email = [loginEmailField text];
     NSString *password = [loginPasswordField text];
     
@@ -150,5 +169,19 @@
 }
 
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+
+    [signupEmailField resignFirstResponder];
+    [signupPasswordField resignFirstResponder];
+    [signupPasswordConfirmField resignFirstResponder];
+    
+    [loginEmailField resignFirstResponder];
+    [loginPasswordField resignFirstResponder];
+    
+}
 
 @end

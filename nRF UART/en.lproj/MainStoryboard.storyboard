@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxE-rT-JJ1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxE-rT-JJ1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +16,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="q8Y-cL-bX5">
-                            <rect key="frame" x="0.0" y="362" width="600" height="2"/>
+                            <rect key="frame" x="0.0" y="400" width="600" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -24,19 +24,19 @@
                         <sections>
                             <tableViewSection id="5i8-fb-fWx">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="42" id="FT5-Lg-WZe">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="42"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="80" id="FT5-Lg-WZe">
+                                        <rect key="frame" x="0.0" y="35" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FT5-Lg-WZe" id="2En-dg-iFb">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptS-2G-Vp2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptS-2G-Vp2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="18"/>
-                                                    <state key="normal" title="CONNECT">
+                                                    <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="30"/>
+                                                    <state key="normal" title="CONNECT TO START">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -56,7 +56,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="275" id="QPE-Ao-b5k">
-                                        <rect key="frame" x="0.0" y="77" width="600" height="275"/>
+                                        <rect key="frame" x="0.0" y="115" width="600" height="275"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QPE-Ao-b5k" id="15S-hd-cwT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="274"/>
@@ -105,34 +105,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8V-yf-SlO">
-                                <rect key="frame" x="20" y="278" width="200" height="44"/>
+                            <button opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8V-yf-SlO">
+                                <rect key="frame" x="0.0" y="437" width="400" height="77"/>
                                 <animations/>
-                                <state key="normal" title="Button" image="FBLogin.png"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="CONNECT VIA FB">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="36" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="fbLoginPressed:" destination="CyP-6P-uL8" eventType="touchUpInside" id="UdG-VQ-zpe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvD-U0-2kb">
-                                <rect key="frame" x="20" y="180" width="112" height="32"/>
+                            <button opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gvD-U0-2kb">
+                                <rect key="frame" x="-44" y="352" width="400" height="77"/>
                                 <animations/>
-                                <state key="normal" title="Login with Email"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="LOGIN">
+                                            <attributes>
+                                                <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="36" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="emailLoginPressed:" destination="CyP-6P-uL8" eventType="touchUpInside" id="uDp-do-8Ii"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULe-YF-9cK">
-                                <rect key="frame" x="20" y="95" width="129" height="32"/>
+                            <button opaque="NO" contentMode="center" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULe-YF-9cK">
+                                <rect key="frame" x="0.0" y="275" width="400" height="77"/>
                                 <animations/>
-                                <state key="normal" title="Sign up with Email"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="SIGN UP">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="36" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="emailSignupPressed:" destination="CyP-6P-uL8" eventType="touchUpInside" id="10Y-zS-MHd"/>
                                     <segue destination="huh-VV-wtp" kind="show" identifier="SignupWithEmail" id="mB8-RD-XlQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-Ar-xyT">
+                                <rect key="frame" x="158" y="120" width="422" height="147"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="HITSMART">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="84" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logo_noblack.png" translatesAutoresizingMaskIntoConstraints="NO" id="dYu-wc-sdp">
+                                <rect key="frame" x="180" y="20" width="229" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="106" id="9og-sa-Cj4"/>
+                                    <constraint firstAttribute="width" constant="229" id="kZv-zr-dxK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dYu-wc-sdp" firstAttribute="centerX" secondItem="eGs-ce-FuS" secondAttribute="centerX" id="At1-Ut-5Sz"/>
+                            <constraint firstItem="gvD-U0-2kb" firstAttribute="top" secondItem="ULe-YF-9cK" secondAttribute="bottom" id="CnN-IN-Av8"/>
+                            <constraint firstItem="Rdk-Ar-xyT" firstAttribute="centerX" secondItem="eGs-ce-FuS" secondAttribute="centerX" id="Jj0-FI-3xp"/>
+                            <constraint firstItem="gvD-U0-2kb" firstAttribute="centerX" secondItem="eGs-ce-FuS" secondAttribute="centerX" id="LOR-m6-tsO"/>
+                            <constraint firstItem="ULe-YF-9cK" firstAttribute="centerX" secondItem="eGs-ce-FuS" secondAttribute="centerX" id="SWX-l0-Eqq"/>
+                            <constraint firstItem="i8V-yf-SlO" firstAttribute="width" secondItem="gvD-U0-2kb" secondAttribute="width" id="Y8S-k7-Sym"/>
+                            <constraint firstItem="i8V-yf-SlO" firstAttribute="top" secondItem="gvD-U0-2kb" secondAttribute="bottom" id="YY8-le-HWH"/>
+                            <constraint firstItem="i8V-yf-SlO" firstAttribute="centerX" secondItem="eGs-ce-FuS" secondAttribute="centerX" id="cZg-02-ztH"/>
+                            <constraint firstItem="i8V-yf-SlO" firstAttribute="height" secondItem="gvD-U0-2kb" secondAttribute="height" id="fB8-gK-GHk"/>
+                            <constraint firstItem="ULe-YF-9cK" firstAttribute="height" secondItem="gvD-U0-2kb" secondAttribute="height" id="iiL-bh-Bmz"/>
+                            <constraint firstItem="ULe-YF-9cK" firstAttribute="width" secondItem="gvD-U0-2kb" secondAttribute="width" id="yfI-kK-KCL"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="UId-Mc-hHc" kind="presentation" identifier="LoginSuccessful" id="Zh4-HS-ZrL"/>
@@ -155,7 +222,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <segue destination="CyP-6P-uL8" kind="show" identifier="UserNotCached" id="rAw-GY-xUt"/>
@@ -178,24 +245,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfq-MY-N6i">
-                                <rect key="frame" x="84" y="67" width="76" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="BC3-LM-KIL">
+                                <rect key="frame" x="186" y="247" width="229" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="7BJ-G0-9o5"/>
+                                    <constraint firstAttribute="height" constant="106" id="Hp0-r9-CZ7"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-2q-wSb">
+                                <rect key="frame" x="94" y="144" width="330" height="32"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-qh-XPO">
-                                <rect key="frame" x="20" y="106" width="140" height="20"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-2q-wSb">
-                                <rect key="frame" x="176" y="15" width="248" height="32"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="217" y="99" width="248" height="30"/>
@@ -204,11 +265,11 @@
                                     <rect key="frame" x="219" y="97" width="248" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8sh-am-YJe">
-                                <rect key="frame" x="176" y="61" width="248" height="32"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8sh-am-YJe">
+                                <rect key="frame" x="94" y="184" width="330" height="30"/>
                                 <animations/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="217" y="143" width="248" height="30"/>
@@ -217,10 +278,11 @@
                                     <rect key="frame" x="219" y="141" width="248" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6H4-i0-wGB">
-                                <rect key="frame" x="176" y="100" width="248" height="32"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6H4-i0-wGB">
+                                <rect key="frame" x="94" y="222" width="330" height="32"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="217" y="191" width="248" height="30"/>
@@ -229,32 +291,80 @@
                                     <rect key="frame" x="219" y="189" width="248" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-Rs-sUz">
-                                <rect key="frame" x="20" y="162" width="76" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-Rs-sUz">
+                                <rect key="frame" x="231" y="361" width="300" height="60"/>
                                 <animations/>
-                                <state key="normal" title="Submit"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="MAM-7m-Q5W"/>
+                                    <constraint firstAttribute="height" constant="60" id="XRB-du-UUo"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="SUBMIT">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="24" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="emailSignupSubmitPressed:" destination="huh-VV-wtp" eventType="touchUpInside" id="Y3U-R8-3PR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgi-Va-De1">
-                                <rect key="frame" x="141" y="162" width="48" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zgi-Va-De1">
+                                <rect key="frame" x="240" y="421" width="300" height="60"/>
                                 <animations/>
-                                <state key="normal" title="Cancel"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RE6-Ve-5iV"/>
+                                    <constraint firstAttribute="width" constant="300" id="m4z-56-A4P"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="CANCEL">
+                                            <attributes>
+                                                <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="24" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="emailSignupCancelPressed:" destination="huh-VV-wtp" eventType="touchUpInside" id="g92-Xn-qqt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDl-iS-C5g">
-                                <rect key="frame" x="114" y="21" width="46" height="20"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kf-7u-Eav">
+                                <rect key="frame" x="197" y="0.0" width="207" height="147"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="SIGNUP">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="64" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BC3-LM-KIL" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="6A1-hI-B0D"/>
+                            <constraint firstItem="8sh-am-YJe" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="G1H-2m-ehr"/>
+                            <constraint firstItem="CuR-2q-wSb" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="GJo-Ip-Vy9"/>
+                            <constraint firstItem="Zgi-Va-De1" firstAttribute="top" secondItem="6tB-Rs-sUz" secondAttribute="bottom" id="LWI-2u-uBT"/>
+                            <constraint firstItem="6tB-Rs-sUz" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="OsO-Du-2Fc"/>
+                            <constraint firstItem="5Kf-7u-Eav" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="Pmp-hw-9t4"/>
+                            <constraint firstItem="6H4-i0-wGB" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="ZTb-au-h7J"/>
+                            <constraint firstItem="BC3-LM-KIL" firstAttribute="centerY" secondItem="kc1-CV-LGe" secondAttribute="centerY" id="cy4-Kp-pL8"/>
+                            <constraint firstItem="6tB-Rs-sUz" firstAttribute="top" secondItem="BC3-LM-KIL" secondAttribute="bottom" constant="8" id="gvx-Jg-XO6"/>
+                            <constraint firstItem="Zgi-Va-De1" firstAttribute="centerX" secondItem="kc1-CV-LGe" secondAttribute="centerX" id="yPA-uw-HfN"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="signupBtnSubmit" destination="6tB-Rs-sUz" id="Evu-Kw-G8k"/>
@@ -281,24 +391,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VH2-bf-LHW">
-                                <rect key="frame" x="20" y="20" width="51" height="20"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-O2-2BF">
+                                <rect key="frame" x="94" y="144" width="330" height="32"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxP-8Q-rcN">
-                                <rect key="frame" x="20" y="63" width="76" height="20"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-O2-2BF">
-                                <rect key="frame" x="117" y="14" width="248" height="32"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="217" y="99" width="248" height="30"/>
@@ -307,11 +404,54 @@
                                     <rect key="frame" x="219" y="97" width="248" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZW-ti-txF">
-                                <rect key="frame" x="117" y="57" width="248" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-eK-2tQ">
+                                <rect key="frame" x="271" y="361" width="300" height="60"/>
                                 <animations/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0rw-X6-RM4"/>
+                                    <constraint firstAttribute="height" constant="60" id="iRV-me-ggX"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="SUBMIT">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="24" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="emailLoginSubmitPressed:" destination="SDB-Mo-cdr" eventType="touchUpInside" id="H70-8r-DDL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXu-Sw-6XC">
+                                <rect key="frame" x="215" y="0.0" width="171" height="147"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="LOGIN">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="64" name="Futura-CondensedExtraBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="bCH-fC-sxx">
+                                <rect key="frame" x="186" y="247" width="229" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="106" id="fpO-gZ-Bxh"/>
+                                    <constraint firstAttribute="width" constant="229" id="yek-vl-TZY"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="bezel" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZW-ti-txF">
+                                <rect key="frame" x="94" y="182" width="330" height="32"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="217" y="143" width="248" height="30"/>
@@ -320,18 +460,25 @@
                                     <rect key="frame" x="219" y="141" width="248" height="30"/>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-eK-2tQ">
-                                <rect key="frame" x="20" y="110" width="59" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4h-34-QF6">
+                                <rect key="frame" x="271" y="429" width="300" height="60"/>
                                 <animations/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="emailLoginSubmitPressed:" destination="SDB-Mo-cdr" eventType="touchUpInside" id="H70-8r-DDL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4h-34-QF6">
-                                <rect key="frame" x="117" y="110" width="48" height="32"/>
-                                <animations/>
-                                <state key="normal" title="Cancel"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="HI2-9Y-uV5"/>
+                                    <constraint firstAttribute="height" constant="60" id="uhJ-t5-6HX"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="CANCEL">
+                                            <attributes>
+                                                <color key="NSColor" red="0.96470588239999999" green="0.1960784314" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="24" name="Futura-CondensedExtraBold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <connections>
                                     <action selector="emailLoginCancelPressed:" destination="SDB-Mo-cdr" eventType="touchUpInside" id="oXK-zr-snG"/>
                                 </connections>
@@ -339,6 +486,17 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hjn-eK-2tQ" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="5bF-HG-8vF"/>
+                            <constraint firstItem="Tvc-O2-2BF" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="B0n-4u-GYT"/>
+                            <constraint firstItem="bCH-fC-sxx" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="H4d-BT-fIs"/>
+                            <constraint firstItem="B4h-34-QF6" firstAttribute="top" secondItem="Hjn-eK-2tQ" secondAttribute="bottom" id="NFN-jp-qpZ"/>
+                            <constraint firstItem="Hjn-eK-2tQ" firstAttribute="top" secondItem="bCH-fC-sxx" secondAttribute="bottom" constant="8" id="bDS-8h-70v"/>
+                            <constraint firstItem="bCH-fC-sxx" firstAttribute="centerY" secondItem="ZjO-Hl-Tgu" secondAttribute="centerY" id="hQa-et-NrW"/>
+                            <constraint firstItem="wXu-Sw-6XC" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="ms5-ah-6rw"/>
+                            <constraint firstItem="hZW-ti-txF" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="rK8-tt-aqh"/>
+                            <constraint firstItem="B4h-34-QF6" firstAttribute="centerX" secondItem="ZjO-Hl-Tgu" secondAttribute="centerX" id="weA-Bm-ip1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="loginBtnSubmit" destination="Hjn-eK-2tQ" id="gBy-pM-CZb"/>
@@ -354,11 +512,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FBLogin.png" width="202" height="44"/>
+        <image name="logo_noblack.png" width="909" height="425"/>
+        <image name="logo_transparent.png" width="909" height="425"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jWb-ri-JsV"/>
+        <segue reference="Zh4-HS-ZrL"/>
         <segue reference="2f6-uh-amt"/>
-        <segue reference="2vj-MR-AI8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,7 +25,7 @@
     [[UIBarButtonItem appearance] setTintColor:UIColorFromRGB(0xF6320B)];
     
     [[UINavigationBar appearance] setTranslucent:NO];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xF6320B), NSFontAttributeName:[UIFont fontWithName:@"Futura-CondensedMedium" size:24.0]}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xFFFFFF), NSFontAttributeName:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:24.0]}];
     [[UIBarButtonItem appearance] setTintColor:UIColorFromRGB(0xF6320B)];
     
     

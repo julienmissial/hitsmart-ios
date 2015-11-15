@@ -8,6 +8,7 @@
 
 #import "CurrentSessionViewController.h"
 #import <Parse/Parse.h>
+#import <Social/Social.h>
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define SCREEN_HEIGHT self.view.frame.size.height
@@ -40,6 +41,7 @@ typedef enum
     UIButton * startStop;
     UIButton * resetButton;
     UIButton * logoutButton;
+    UIButton * shareButton;
     NSTimer * stopTimer;
     NSDate * startDate;
     NSDate * pauseDate;
@@ -94,7 +96,7 @@ typedef enum
     time.textColor = UIColorFromRGB(0xFFFFFF);
     [time setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:60.0]];
     [time sizeToFit];
-    time.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2 - 200);
+    time.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2 - 125);
     [self.view addSubview:time];
     paused = false;
     
@@ -106,7 +108,7 @@ typedef enum
     startStop.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2 - 100);
     [startStop addTarget:self action:@selector(startStopTimer) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:startStop];
+    //[self.view addSubview:startStop];
     
 #pragma mark - resetTimerButton
     resetButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -124,7 +126,7 @@ typedef enum
     punchesLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
     [punchesLabelTitle sizeToFit];
     [punchesLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    punchesLabelTitle.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.2 + 80);
+    punchesLabelTitle.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.4 + 80);
     [punchesLabelTitle sizeToFit];
     [self.view addSubview:punchesLabelTitle];
     
@@ -135,7 +137,7 @@ typedef enum
     punchesLabel.textColor = UIColorFromRGB(0xFFFFFF);
     [punchesLabel sizeToFit];
     [punchesLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.4 + 80);
+    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.6 + 80);
     [punchesLabel sizeToFit];
     [self.view addSubview:punchesLabel];
     
@@ -145,7 +147,7 @@ typedef enum
     forceLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
     [forceLabelTitle sizeToFit];
     [forceLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    forceLabelTitle.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.4 + 105);
+    forceLabelTitle.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.4 + 80);
     [forceLabelTitle sizeToFit];
     
     [self.view addSubview:forceLabelTitle];
@@ -157,7 +159,7 @@ typedef enum
     forceLabel.textColor = UIColorFromRGB(0xFFFFFF);
     [forceLabel sizeToFit];
     [forceLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    forceLabel.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.6 + 105);
+    forceLabel.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.6 + 80);
     [forceLabel sizeToFit];
     
     [self.view addSubview:forceLabel];
@@ -168,7 +170,7 @@ typedef enum
     averageForceLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
     [averageForceLabelTitle sizeToFit];
     [averageForceLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    averageForceLabelTitle.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/1.8 + 80);
+    averageForceLabelTitle.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2.4 + 200);
     [averageForceLabelTitle sizeToFit];
     
     [self.view addSubview:averageForceLabelTitle];
@@ -180,14 +182,15 @@ typedef enum
     averageForceLabel.textColor = UIColorFromRGB(0xFFFFFF);
     [averageForceLabel sizeToFit];
     [averageForceLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2 + 80);
+    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2.6 + 200);
     [averageForceLabel sizeToFit];
     
     [self.view addSubview:averageForceLabel];
     
+#pragma mark - LogoutButton
     logoutButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self formatTheButtonMyWay:logoutButton withText:@"LOGOUT"];
-    [logoutButton.titleLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:12.0]];
+    [logoutButton.titleLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
     logoutButton.frame = CGRectMake(0, 0, 75, 75);
     logoutButton.layer.cornerRadius = 37.5;
     logoutButton.center = CGPointMake(SCREEN_WIDTH-50, SCREEN_HEIGHT-50);
@@ -202,7 +205,7 @@ typedef enum
             self.state = SCANNING;
             
             NSLog(@"Started scan ...");
-            [self.connectButton setTitle:@"Scanning ..." forState:UIControlStateNormal];
+            [self.connectButton setTitle:@"SCANNING..." forState:UIControlStateNormal];
             
             [self.cm scanForPeripheralsWithServices:@[UARTPeripheral.uartServiceUUID] options:@{CBCentralManagerScanOptionAllowDuplicatesKey: [NSNumber numberWithBool:NO]}];
             break;
@@ -211,7 +214,7 @@ typedef enum
             self.state = IDLE;
             
             NSLog(@"Stopped scan");
-            [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
+            [self.connectButton setTitle:@"CONNECT TO START" forState:UIControlStateNormal];
             
             [self.cm stopScan];
             break;
@@ -308,10 +311,11 @@ typedef enum
     //[self addTextToConsole:[NSString stringWithFormat:@"Did connect to %@", peripheral.name] dataType:LOGGING];
     
     self.state = CONNECTED;
-    [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+    [self.connectButton setTitle:@"DISCONNECT" forState:UIControlStateNormal];
     [self.sendButton setUserInteractionEnabled:YES];
     [self.sendTextField setUserInteractionEnabled:YES];
     
+    [self startStopTimer];
     if ([self.currentPeripheral.peripheral isEqual:peripheral])
     {
         [self.currentPeripheral didConnect];
@@ -325,7 +329,8 @@ typedef enum
     //[self addTextToConsole:[NSString stringWithFormat:@"Did disconnect from %@, error code %d", peripheral.name, error.code] dataType:LOGGING];
     
     self.state = IDLE;
-    [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
+    [self startStopTimer];
+    [self.connectButton setTitle:@"CONNECT TO START" forState:UIControlStateNormal];
     [self.sendButton setUserInteractionEnabled:NO];
     [self.sendTextField setUserInteractionEnabled:NO];
     
@@ -358,9 +363,42 @@ typedef enum
         stopTimer = nil;
         pauseDate = startDate;
         paused = true;
+        
+        
+#pragma mark - ShareButton
+        shareButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [shareButton setTitle:@"SHARE" forState:UIControlStateNormal];
+        
+        [shareButton setTitleColor:UIColorFromRGB(0xFFFFFF) forState:UIControlStateNormal];
+        [shareButton setBackgroundColor:UIColorFromRGB(0xF6320B)];
+        [shareButton setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:24.0]];
+        
+        shareButton.frame = CGRectMake(0, [UIScreen mainScreen].applicationFrame.size.height - 80, [UIScreen mainScreen].applicationFrame.size.width, 100);
+        shareButton.layer.cornerRadius = 0;
+        shareButton.clipsToBounds = YES;
+        
+        [shareButton addTarget:self action:@selector(share)
+              forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:shareButton];
     }
 
 }
+
+- (IBAction)share{
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM/dd/yyyy"];
+    NSString *dateString = [dateFormat stringFromDate:today];
+    NSString *share_text = [NSString stringWithFormat:@"HitSmart Session %@:\n%@ Punches\n%@ Average Force\nElapsed Time: %@\n", dateString, punchesLabel.text, averageForceLabel.text, time.text];
+    
+    NSArray *itemsToShare = @[share_text];
+    UIActivityViewController *a_vc = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    
+    a_vc.excludedActivityTypes = @[];
+    [self presentViewController:a_vc animated:YES completion:nil];
+    [shareButton removeFromSuperview];
+}
+
 
 -(void)updateTimer{
     // Create date from the elapsed time
@@ -467,9 +505,9 @@ typedef enum
     return;
 }
 
-
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
+
 @end
