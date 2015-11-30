@@ -31,13 +31,19 @@ typedef enum
     int punches;
     float force;
     float totalForce;
+    float velocity;
+    float calories;
     UILabel * time;
     UILabel * punchesLabelTitle;
     UILabel * punchesLabel;
     UILabel * forceLabelTitle;
     UILabel * forceLabel;
+    UILabel * velocityLabel;
+    UILabel * velocityLabelTitle;
     UILabel * averageForceLabel;
     UILabel * averageForceLabelTitle;
+    UILabel * caloriesLabel;
+    UILabel * caloriesLabelTitle;
     UIButton * startStop;
     UIButton * resetButton;
     UIButton * logoutButton;
@@ -126,7 +132,7 @@ typedef enum
     punchesLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
     [punchesLabelTitle sizeToFit];
     [punchesLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    punchesLabelTitle.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.4 + 80);
+    punchesLabelTitle.center = CGPointMake(SCREEN_WIDTH/4.0, SCREEN_HEIGHT/2.4 + 80);
     [punchesLabelTitle sizeToFit];
     [self.view addSubview:punchesLabelTitle];
     
@@ -137,7 +143,7 @@ typedef enum
     punchesLabel.textColor = UIColorFromRGB(0xFFFFFF);
     [punchesLabel sizeToFit];
     [punchesLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4, SCREEN_HEIGHT/2.6 + 80);
+    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4.0, SCREEN_HEIGHT/2.6 + 80);
     [punchesLabel sizeToFit];
     [self.view addSubview:punchesLabel];
     
@@ -164,13 +170,59 @@ typedef enum
     
     [self.view addSubview:forceLabel];
     
+#pragma mark - CaloriesNumber
+    calories = 0.00;
+    caloriesLabel = [[UILabel alloc]init];
+    caloriesLabel.text = [NSString stringWithFormat:@"%.2f", calories];
+    caloriesLabel.textColor = UIColorFromRGB(0xFFFFFF);
+    [caloriesLabel sizeToFit];
+    [caloriesLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
+    caloriesLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 70);
+    [caloriesLabel sizeToFit];
+    
+    [self.view addSubview:caloriesLabel];
+    
+#pragma mark - CaloriesTitle
+    caloriesLabelTitle = [[UILabel alloc]init];
+    caloriesLabelTitle.text = @"CALORIES";
+    caloriesLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
+    [caloriesLabelTitle sizeToFit];
+    [caloriesLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
+    caloriesLabelTitle.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/1.88 + 70);
+    [caloriesLabelTitle sizeToFit];
+    
+    [self.view addSubview:caloriesLabelTitle];
+    
+#pragma mark - VelocityTitle
+    velocityLabelTitle = [[UILabel alloc]init];
+    velocityLabelTitle.text = @"VELOCITY (m/s)";
+    velocityLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
+    [velocityLabelTitle sizeToFit];
+    [velocityLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
+    velocityLabelTitle.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/1.88 + 130);
+    [velocityLabelTitle sizeToFit];
+    
+    [self.view addSubview:velocityLabelTitle];
+    
+#pragma mark - VelocityNumber
+    velocity = 0.00;
+    velocityLabel = [[UILabel alloc]init];
+    velocityLabel.text = [NSString stringWithFormat:@"%.2f", velocity];
+    velocityLabel.textColor = UIColorFromRGB(0xFFFFFF);
+    [velocityLabel sizeToFit];
+    [velocityLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
+    velocityLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 130);
+    [velocityLabel sizeToFit];
+    
+    [self.view addSubview:velocityLabel];
+    
 #pragma mark - AverageForceTitle
     averageForceLabelTitle = [[UILabel alloc]init];
     averageForceLabelTitle.text = @"AVERAGE FORCE (N)";
     averageForceLabelTitle.textColor = UIColorFromRGB(0xFFFFFF);
     [averageForceLabelTitle sizeToFit];
     [averageForceLabelTitle setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    averageForceLabelTitle.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2.4 + 200);
+    averageForceLabelTitle.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/1.88 + 200);
     [averageForceLabelTitle sizeToFit];
     
     [self.view addSubview:averageForceLabelTitle];
@@ -182,7 +234,7 @@ typedef enum
     averageForceLabel.textColor = UIColorFromRGB(0xFFFFFF);
     [averageForceLabel sizeToFit];
     [averageForceLabel setFont:[UIFont fontWithName:@"Futura-CondensedExtraBold" size:20.0]];
-    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2.6 + 200);
+    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 200);
     [averageForceLabel sizeToFit];
     
     [self.view addSubview:averageForceLabel];
@@ -269,14 +321,28 @@ typedef enum
     
     self.consoleTextView.text = [self.consoleTextView.text stringByAppendingFormat:@"%@\n", string];
     punchesLabel.text = [NSString stringWithFormat:@"%i", ++punches];
+    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4.0, SCREEN_HEIGHT/2.6 + 80);
     [punchesLabel sizeToFit];
     
-    force = [string floatValue];
+    
+    velocity = [string floatValue];
+    velocityLabel.text = [NSString stringWithFormat:@"%.2f", velocity];
+    velocityLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 130);
+    [velocityLabel sizeToFit];
+    
+    calories += (velocity * velocity * 0.00002988);
+    caloriesLabel.text = [NSString stringWithFormat:@"%.2f", calories];
+    caloriesLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 70);
+    [caloriesLabel sizeToFit];
+    
+    force = (velocity * 0.25)/0.002;
     forceLabel.text = [NSString stringWithFormat:@"%.2f", force];
+    forceLabel.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.6 + 80);
     [forceLabel sizeToFit];
     
     totalForce = (totalForce + force);
     averageForceLabel.text = [NSString stringWithFormat:@"%.2f", totalForce/punches];
+    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 200);
     [averageForceLabel sizeToFit];
     
     [self.consoleTextView setScrollEnabled:NO];
@@ -389,7 +455,7 @@ typedef enum
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"MM/dd/yyyy"];
     NSString *dateString = [dateFormat stringFromDate:today];
-    NSString *share_text = [NSString stringWithFormat:@"HitSmart Session %@:\n%@ Punches\n%@ Average Force\nElapsed Time: %@\n", dateString, punchesLabel.text, averageForceLabel.text, time.text];
+    NSString *share_text = [NSString stringWithFormat:@"HitSmart Session %@:\n%@ Punches\n%@ Average Force\n%@ Calories\nElapsed Time: %@\n", dateString, punchesLabel.text, averageForceLabel.text, caloriesLabel.text, time.text];
     
     NSArray *itemsToShare = @[share_text];
     UIActivityViewController *a_vc = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
@@ -429,13 +495,28 @@ typedef enum
     
     punches = 0;
     punchesLabel.text = [NSString stringWithFormat:@"%i", punches];
+    punchesLabel.center = CGPointMake(SCREEN_WIDTH/4.0, SCREEN_HEIGHT/2.6 + 80);
+    [punchesLabel sizeToFit];
+    
+    velocity = 0.00;
+    velocityLabel.text = [NSString stringWithFormat:@"%.2f", velocity];
+    velocityLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 130);
+    [caloriesLabel sizeToFit];
+    
+    calories = 0.00;
+    caloriesLabel.text = [NSString stringWithFormat:@"%.2f", calories];
+    caloriesLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 70);
+    [caloriesLabel sizeToFit];
     
     force = 0;
     forceLabel.text = [NSString stringWithFormat:@"%.2f", force];
+    forceLabel.center = CGPointMake(SCREEN_WIDTH/1.3, SCREEN_HEIGHT/2.6 + 80);
+    [caloriesLabel sizeToFit];
     
     totalForce = 0;
     averageForceLabel.text = [NSString stringWithFormat:@"%.2f", totalForce];
-    
+    [averageForceLabel sizeToFit];
+    averageForceLabel.center = CGPointMake(SCREEN_WIDTH/2.0, SCREEN_HEIGHT/2.0 + 200);
     [startStop setTitle:@"START" forState:UIControlStateNormal];
     
 }
